@@ -164,7 +164,7 @@ const Form = () => {
               <div className="image">
                 {idcard.image && (
                   <img
-                    src={`http://localhost:8000/uploads/${idcard.image}`}
+                    src={`https://qr-codebackend.vercel.app/uploads/${idcard.image}`}
                     alt="Student Photo"
                   />
                 )}
