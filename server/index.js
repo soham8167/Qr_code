@@ -17,7 +17,13 @@ app.use(bodyParser.json());
 
 // Middleware to enable cross-origin resource sharing
 
-app.use(cors());
+app.use(cors(
+  {
+    origin:[""],
+    methods:["POST", "GET"],
+    credentials: true
+  }
+));
 
 // Middleware to serve static files from the uploads directory
 
