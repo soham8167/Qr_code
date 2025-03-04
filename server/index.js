@@ -24,7 +24,9 @@ app.use(cors(
     credentials: true
   }
 ));
-
+app.get("/", (req,res)=>{
+  res.json("Hi");
+})
 // Middleware to serve static files from the uploads directory
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
