@@ -75,14 +75,14 @@ const Form = () => {
       formData.append('phno', phno);
       formData.append('image', image);
 
-      try {
-        const response = await axios.post('https://qr-codebackend.vercel.app/generate-id-card', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
-        setIdCard(response.data);
-      } catch (err) {
-        console.log('Error while calling API:', err);
-      }
+     try {
+  const response = await axios.post('https://qr-codebackend.vercel.app/generate-id-card', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  setIdCard(response.data);
+} catch (err) {
+  console.log('Error while calling API:', err.response ? err.response.data : err.message);
+}
     }
   };
 
