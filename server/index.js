@@ -4,43 +4,34 @@ const cors = require("cors");
 const path = require("path");
 const idCardRoutes = require("./routes/idCardRoutes");
 
-
 const app = express();
 
-// Middleware to parse URL-encoded data
-
+// Middleware to parse URL-encoded and JSON data
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// Middleware to parse JSON data
-
 app.use(bodyParser.json());
 
-// Middleware to enable cross-origin resource sharing
+// CORS Configuration
+app.use(
+  cors({
+    origin: ["https://qr-codeclient.vercel.app", "http://localhost:5173"], // Added localhost for development
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
-app.use(cors(
-  {
-    origin:["https://qr-codeclient.vercel.app"],
-    methods:["POST", "GET"],
-    credentials: true
-  }
-));
-app.get("/", (req,res)=>{
-  res.json("Hi");
-})
-// Middleware to serve static files from the uploads directory
+// Root route for testing
+app.get("/", (req, res) => {
+  res.json("Server is running...");
+});
 
+// Middleware to serve uploaded images
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Import the routes from the routes file
-
+// Import routes
 app.use("/", idCardRoutes);
 
 // Start the server
-
 const PORT = process.env.PORT || 8000;
-
 app.listen(PORT, () => {
-
   console.log(`Server started on port ${PORT}`);
-
 });
