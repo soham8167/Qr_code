@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 app.use(cors(
   {
-    origin:[""],
+    origin:["https://qr-codeclient.vercel.app/"],
     methods:["POST", "GET"],
     credentials: true
   }
