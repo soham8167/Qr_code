@@ -76,7 +76,7 @@ const Form = () => {
       formData.append('image', image);
 
       try {
-        const response = await axios.post('http://localhost:8000/generate-id-card', formData, {
+        const response = await axios.post('https://qr-codebackend.vercel.app/generate-id-card', formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
         });
         setIdCard(response.data);
